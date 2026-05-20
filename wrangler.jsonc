@@ -4,6 +4,13 @@
   "workers_dev": true,
   "preview_urls": false,
   "compatibility_date": "2026-03-16",
+  "d1_databases": [
+    {
+      "binding": "INTAKE_DB",
+      "database_name": "course-intake",
+      "database_id": "cf5b53b9-d028-48b0-a4eb-dfaa27db9054"
+    }
+  ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
