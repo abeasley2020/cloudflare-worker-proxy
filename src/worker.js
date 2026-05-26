@@ -64,7 +64,7 @@ Set "ready_for_synthesis" to true only when all five domains are at least lightl
 
 CLOSING THE CONVERSATION:
 When you set "ready_for_synthesis" to true, your "message" field MUST end with this exact sentence, on its own line, as the final line of the message:
-"Someone from PUO Course Production will be in touch by email to schedule your kickoff meeting."
+"Someone from Purdue Course Production will be in touch by email to schedule your kickoff meeting."
 Before that line, write a brief, dry acknowledgment (one short sentence — e.g., "Thanks. I have what I need."). No restating of what was covered. No effusive thanks. The closing sentence must appear verbatim — do not paraphrase, expand, or substitute names.
 
 CRITICAL OUTPUT REQUIREMENTS:
@@ -129,12 +129,12 @@ async function sendMagicLinkEmail(env, intake) {
   if (!intake.faculty_email) return;
   const courseTitle = intake.course_title || "your upcoming course";
   const magicLink = `https://course-intake.vercel.app/s/${intake.magic_link_token}`;
-  const fromName = intake.id_owner || "Purdue CDD";
+  const fromName = intake.id_owner || "Purdue Course Production";
   const subject = `Pre-kickoff intake for ${courseTitle}`;
   const html = `
     <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;padding:32px;color:#1A1A1A;">
       <div style="border-bottom:2px solid #0D0D0D;padding-bottom:16px;margin-bottom:24px;">
-        <p style="font-family:monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C8973A;margin:0 0 8px;">Purdue Course Production · Pre-Kickoff Intake</p>
+        <p style="font-family:monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#C8973A;margin:0 0 8px;">Purdue Course Production · Pre-Kickoff Intake</p>
         <h1 style="font-size:22px;margin:0;">${escapeHtml(courseTitle)}</h1>
       </div>
       <p style="font-size:15px;line-height:1.6;">Dear ${escapeHtml(intake.faculty_name)},</p>
@@ -158,7 +158,7 @@ async function sendMagicLinkEmail(env, intake) {
         <span style="font-family:monospace;font-size:12px;word-break:break-all;">${magicLink}</span>
       </p>
       <div style="margin-top:32px;padding-top:16px;border-top:1px solid #E2DDD8;font-size:12px;color:#7A7570;font-family:monospace;">
-        Sent by the Purdue CDD Course Intake Agent on behalf of ${escapeHtml(fromName)}.
+        Sent by Purdue Course Production on behalf of ${escapeHtml(fromName)}.
       </div>
     </div>
   `;
@@ -170,7 +170,7 @@ async function sendMagicLinkEmail(env, intake) {
         "Authorization": `Bearer ${env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: "Purdue CDD <onboarding@resend.dev>",
+        from: "Purdue Course Production <onboarding@resend.dev>",
         to: intake.faculty_email,
         subject,
         html
@@ -275,7 +275,7 @@ async function sendApprovalEmail(env, intake, brief) {
   const html = `
     <div style="font-family:Georgia,serif;max-width:700px;margin:0 auto;padding:32px;color:#1A1A1A;">
       <div style="border-bottom:2px solid #0D0D0D;padding-bottom:16px;margin-bottom:24px;">
-        <p style="font-family:monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C8973A;margin:0 0 8px;">Purdue CDD · Intake Approved</p>
+        <p style="font-family:monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#C8973A;margin:0 0 8px;">Purdue Course Production · Intake Approved</p>
         <h1 style="font-size:22px;margin:0 0 4px;">${escapeHtml(courseTitle)}</h1>
         <p style="font-size:13px;color:#7A7570;margin:0;">Approved by ${escapeHtml(intake.faculty_name)}</p>
       </div>
@@ -291,7 +291,7 @@ async function sendApprovalEmail(env, intake, brief) {
       </div>
       ${briefHtml}
       <div style="margin-top:32px;padding-top:16px;border-top:1px solid #E2DDD8;font-size:12px;color:#7A7570;font-family:monospace;">
-        Sent by the Purdue CDD Course Intake Agent.
+        Sent by the Purdue Course Production Course Intake Agent.
       </div>
     </div>
   `;
@@ -303,7 +303,7 @@ async function sendApprovalEmail(env, intake, brief) {
         "Authorization": `Bearer ${env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: "Purdue CDD <onboarding@resend.dev>",
+        from: "Purdue Course Production <onboarding@resend.dev>",
         to: intake.id_email,
         subject,
         html
