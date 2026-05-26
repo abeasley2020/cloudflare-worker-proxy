@@ -483,6 +483,12 @@ RULES:
 - Be concise. The ID will use this as a working document, not a transcript summary.
 - schema_version must always be exactly the string "v1".
 
+PARTIAL COVERAGE:
+- Treat partial intakes as valid. The faculty member may have chosen to wrap up early because they need time to gather information; reflect what was shared honestly and route the rest to the kickoff.
+- When the conversation only lightly covers (or skips) a domain, populate that section's scalar fields with "Not yet discussed — to be covered at kickoff" and its arrays with [].
+- For each domain that was not discussed, append a concise item to "content_readiness.open" naming what was missing (e.g., "Learning outcomes were not discussed in this intake") AND a concrete item to "open_questions_for_kickoff" the ID can use as an agenda point (e.g., "Define primary learning outcomes for the course").
+- Never fabricate content to fill a thin domain. An honest "Not yet discussed" with a clear kickoff question is far more useful than a guess.
+
 OUTPUT SCHEMA (emit this exact shape):
 {
   "schema_version": "v1",
